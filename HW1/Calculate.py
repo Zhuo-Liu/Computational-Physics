@@ -4,9 +4,9 @@ def det(n):
     sum1 = 0
     sum2 = 0
     for i in range(1,n):
-        sum1 = sum1 + (n-i)*np.log(i)
+        sum1 = sum1 + (n-i)*math.log(i)
     for i in range(1,2*n):
-        sum2 = sum2 + (2*n-i)*np.log(i)
+        sum2 = sum2 + (2*n-i)*math.log(i)
     
     sum = 4.0 * sum1 - sum2
     det = math.exp(sum)
