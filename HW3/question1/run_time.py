@@ -2,6 +2,7 @@ import householder as hh
 import givens as gv
 import numpy as np
 import time
+import matplotlib.pyplot as plt
 
 def RandomMatrix(n):
     return np.random.rand(n,n)
@@ -9,6 +10,7 @@ def RandomMatrix(n):
 np.random.seed(int(time.time()))
 
 N = list(range(3,30))
+#N = list(range(100,101))
 time1 = []
 time2 = []
 
@@ -28,5 +30,16 @@ for n in N:
     time1.append(end1-start1)
     time2.append(end2-start2)
 
+time1 = np.array(time1)
+time2 = np.array(time2)
 print(time1)
 print(time2)
+
+time1,=plt.plot(np.arange(3,30),time1,'o-',label='Householder')
+time2,=plt.plot(np.arange(3,30),time2,'o-',label='Givens')
+plt.ylabel('time/s',fontsize='x-large')
+plt.xlabel('n',fontsize='x-large')
+plt.legend([time1,time2],["Householder","Givens"],loc='upper center', bbox_to_anchor=(0.1,0.9), fontsize='large')
+
+plt.savefig('run_time.jpg')
+plt.show()
