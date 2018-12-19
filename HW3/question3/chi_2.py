@@ -1,10 +1,18 @@
 import jackknife as jackk
-import dev
 import numpy as np
 import matplotlib.pyplot as plt
 
+'''
+find the min chi_2/d.o.f
+return a list [m, chi_2, dimension, begin, end]
+1. m: the value of $m_{eff}$
+2. chi_2: list $\chi^2$
+3. dimension: $t_{max}-t_{min}$
+4. begin: $t_{min}$
+5. end: $t_{max}+1$
+'''
 def chi_2(flag):
-    m_eff_time, m_err_time = jackk.get_list('data.dat',flag)
+    m_eff_time, m_err_time = jackk.get_list('data2.dat',flag)
 
     least_chi_2 = 10000
 
@@ -15,18 +23,11 @@ def chi_2(flag):
             sum_1 = np.sum(1.0/part_m_err**2)
             sum_2 = np.sum(part_m_eff/part_m_err**2)
             m = sum_2 / sum_1
+            dimension = end - 1 - begin
             chi_2 = np.sum(((part_m_eff-m)/part_m_err)**2)
-            chi_2 = chi_2 / (end-begin -1)
+            chi_2 = chi_2 / dimension
             if chi_2 < least_chi_2:
                 least_chi_2 = chi_2
-                dimension = end - 1 - begin
                 temp = [m, chi_2, dimension, begin, end]
     
     return temp
-
-
-# if __name__ == "__main__":
-#     list1 = chi_2(1)
-#     list2 = chi_2(2)
-#     print(list1)
-#     print(list2)
