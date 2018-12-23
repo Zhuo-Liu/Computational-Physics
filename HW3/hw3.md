@@ -117,13 +117,13 @@ $$
 $$\chi^2 = \sum_{t_{min}}^{t_{max}}\left( \frac { m _ { e f f } ( t ) - m } { \Delta m _ { e f f } ( t ) } \right) ^ { 2 }$$
 令
 $$\frac{\partial \chi^2}{\partial m} = - 2\sum_{t_{min}}^{t_{max}}\left( \frac { m _ { e f f } ( t ) - m } { \Delta m _ { e f f }^2 ( t ) }\right) = 0$$
-则拟合的结果为
+则$m_{eff}$为
 $$m_{eff} = \frac{\sum_{t_{min}}^{t_{max}} \frac{m_{eff}(t)}{\Delta m_{eff}^2(t)}}{\sum_{t_{min}}^{t_{max}}\frac{1}{\Delta m_{eff}^2(t)}}$$
 误差估计为
 $$\Delta m_{eff} = \sqrt \frac{1}{\sum_{t_{min}}^{t_{max}}\frac{1}{\Delta m_{eff}^2(t)}}$$
-- 拟合的结果为
+- 最后$\chi^2$拟合的结果为
 $$t_{min} = 12,t_{max} = 15, dimension = 3$$
-$$m_{eff} = 0.2433, \Delta m_{eff} = 0.0008, p-value = $$
+$$m_{eff} = 0.2433, \Delta m_{eff} = 0.0008, p-value = 0.3975$$
 
 - 将拟合出的$m_{eff}$值和对应的区间用黄色的线条与之前的图画在一起如下所示。右边的图是左边的图中方框的放大，需要说明的有如下几点
   1. 蓝色的数据是用JackKnife计算出来的原始数据，每条蓝色线条中，中间的圆点是$m_{eff}(t)$，线条的两端是以$\Delta m_{eff}(t)$估计的误差范围
@@ -136,7 +136,7 @@ $$m_{eff} = 0.2433, \Delta m_{eff} = 0.0008, p-value = $$
 ## (d)
 重复前两问的做法，结果如下，图片解释与前两问相同。
 $$t_{min} = 5,t_{max} = 8, dimension = 3$$
-$$m_{eff} = 0.244, \Delta m_{eff} = 0.002, p-value = $$
+$$m_{eff} = 0.244, \Delta m_{eff} = 0.002, p-value = 0.01150$$
 <center>
 <img src="./question3/images_and_data/3d.png" width=80%>
 </center>
