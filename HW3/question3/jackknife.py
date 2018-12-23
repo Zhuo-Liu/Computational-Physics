@@ -43,14 +43,14 @@ def get_list(filename,question_number):
     m_err_time = []
 
     if question_number == 1:
-        for t in range(1,31):
+        for t in range(0,31):
             to_be_cut = C[:,t:t+2]
             m_eff,m_err = JackKnife(to_be_cut,question_number)
 
             m_eff_time.append(m_eff)
             m_err_time.append(m_err)
     elif question_number == 2:
-        for t in range(1,30):
+        for t in range(0,30):
             to_be_cut = C[:,t:t+3]
             m_eff,m_err = JackKnife(to_be_cut,question_number)
 

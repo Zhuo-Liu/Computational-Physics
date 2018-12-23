@@ -5,7 +5,8 @@ import matplotlib.pyplot as plt
 '''
 find the min chi_2/d.o.f
 return a list [m, chi_2, dimension, begin, end]
-1. m: the value of $m_{eff}$
+1. m: the result of $m_{eff}$
+2. m_err: the result of $\Delta m_{eff}$
 2. chi_2: list $\chi^2$
 3. dimension: $t_{max}-t_{min}$
 4. begin: $t_{min}$
@@ -14,7 +15,7 @@ return a list [m, chi_2, dimension, begin, end]
 def chi_2(flag):
     m_eff_time, m_err_time = jackk.get_list('data2.dat',flag)
 
-    least_chi_2 = 10000
+    least_chi_2 = 1000000 # set a number big enough for searching chi^2
 
     for begin in range(0,26):
         for end in range(begin+4,30):
@@ -23,11 +24,12 @@ def chi_2(flag):
             sum_1 = np.sum(1.0/part_m_err**2)
             sum_2 = np.sum(part_m_eff/part_m_err**2)
             m = sum_2 / sum_1
+            m_err = np.sqrt(1 / sum_1)
             dimension = end - 1 - begin
             chi_2 = np.sum(((part_m_eff-m)/part_m_err)**2)
             chi_2 = chi_2 / dimension
             if chi_2 < least_chi_2:
                 least_chi_2 = chi_2
-                temp = [m, chi_2, dimension, begin, end]
+                temp = [m, m_err, chi_2, dimension, begin, end]
     
     return temp
